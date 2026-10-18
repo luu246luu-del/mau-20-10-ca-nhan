@@ -968,7 +968,8 @@
 
   <script>
     window.LOVE_CONFIG = {
-      musicUrl: "",
+
+musicUrl: "images/nhac.mp3",
 
 
       girlfriendMemories: [
@@ -1572,19 +1573,20 @@ bottomPhoto: "images/anhthu.jpg"
     const ccHintBtn = document.getElementById('cc-hint-btn');
 
 
+
 const fairyPool = [
-  { isGf: false, label: "Ảnh khác 🌸", url: "images/anh5.jpg" },
-  { isGf: false, label: "Ảnh khác 🌸", url: "images/anh6.jpg" },
-  { isGf: false, label: "Ảnh khác 🌸", url: "images/anh7.jpg" },
-  { isGf: false, label: "Ảnh khác 🌸", url: "images/anh8.jpg" },
-  { isGf: false, label: "Ảnh khác 🌸", url: "images/anh9.jpg" }
+  { isGf: false, label: "", url: "images/anh5.jpg" },
+  { isGf: false, label: "", url: "images/anh6.jpg" },
+  { isGf: false, label: "", url: "images/anh7.jpg" },
+  { isGf: false, label: "", url: "images/anh8.jpg" },
+  { isGf: false, label: "", url: "images/anh9.jpg" }
 ];
 
 const gfPool = [
-  { isGf: true, label: "Bé yêu của anh 💕", url: "images/anh1.jpg" },
-  { isGf: true, label: "Bé yêu của anh 💕", url: "images/anh2.jpg" },
-  { isGf: true, label: "Bé yêu của anh 💕", url: "images/anh3.jpg" },
-  { isGf: true, label: "Bé yêu của anh 💕", url: "images/anh4.jpg" }
+  { isGf: true, label: "", url: "images/anh1.jpg" },
+  { isGf: true, label: "", url: "images/anh2.jpg" },
+  { isGf: true, label: "", url: "images/anh3.jpg" },
+  { isGf: true, label: "", url: "images/anh4.jpg" }
 ];
 
     let currentGridData = [];
@@ -1600,7 +1602,6 @@ const gfPool = [
         tile.innerHTML = `
           <div class="cc-check-circle">✓</div>
           <img src="${item.url}" alt="${item.label}" crossorigin="anonymous" />
-          <div class="cc-tile-label">${item.label}</div>
         `;
         const imgEl = tile.querySelector('img');
         imgEl.onerror = () => {
