@@ -2425,11 +2425,10 @@ const camShake = {
       c.width = 640;
       c.height = 420;
       const ctx = c.getContext('2d');
-      ctx.fillStyle = '#ffffff';
-      ctx.font = 'italic 900 68px "Playfair Display", serif';
+const fontSize = window.innerWidth < 768 ? '44px' : '68px';
+      ctx.font = `italic 900 ${fontSize} "Playfair Display", serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-
       const lines = txt.split('\n');
       const lh = 84;
       const sy = c.height / 2 - ((lines.length - 1) * lh) / 2;
@@ -3007,7 +3006,7 @@ const camShake = {
       }
     });
 
-    function runScene2Text() {
+function runScene2Text() {
       currentScene = SCENE.TEXT;
       camShake.trigger(2.2);
       holdStartUi.classList.remove('show');
@@ -3017,21 +3016,28 @@ const camShake = {
 
       const phrases = window.LOVE_CONFIG.introTexts;
       let step = 0;
-      function nextText() {
+
+      function showCurrentPhrase() {
         if (step < phrases.length) {
           const { coords, cols } = sampleTextToParticles(phrases[step]);
           morphParticles(coords, cols, step === 0 ? 0.35 : 1.05, 0.9);
           camShake.trigger(1.1);
           audio.chime();
           step++;
-          setTimeout(nextText, 1650);
         } else {
+          window.removeEventListener('pointerdown', handleTextClick);
           runScene3Bouquet();
         }
       }
-      nextText();
-    }
 
+      function handleTextClick(e) {
+        if (e.target.closest('.interactive')) return;
+        showCurrentPhrase();
+      }
+
+      showCurrentPhrase();
+      window.addEventListener('pointerdown', handleTextClick);
+    }
     let bouquetClickable = false;
     function runScene3Bouquet() {
       currentScene = SCENE.BOUQUET;
